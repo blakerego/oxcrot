@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a front-end for a blog application that will use Wordpress as a backend. 
 
-Things you may want to cover:
+The idea use case for using this app is creating a new front-end for a wordpress blog that you already have hosted on Wordpress.com. Wordpress.com offers a nice built-in API to get the data out without much effort. Here we build around this api. 
 
-* Ruby version
-
-* System dependencies
+* Ruby version 
+ruby 2.0.0p247 
 
 * Configuration
+You will need to set the following environment variables: 
 
-* Database creation
+WORDPRESS_SITE_ID
+see http://developer.wordpress.com/docs/api/1/get/sites/%24site/ for more info.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
