@@ -1,0 +1,42 @@
+!!! 5
+
+%html
+  %head
+    %title Happily Adrift
+    = stylesheet_link_tag    "application", :media => "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  
+  %body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.row
+            %li.col-md-2.col-md-offset-1
+              %a{:href => "#"} Home
+            %li.col-md-2
+              %a{:href => "#about"} Places
+            %li.col-md-2
+              %a{:href => "#about"} Archives
+            %li.col-md-2
+              %a{:href => "#about"} Resources
+            %li.col-md-2
+              %a{:href => "#about"} Contact
+    .header_title
+      .title
+        Happily Adrift
+      .subtitle
+        A digital nomad couple traveling the world.
+    .separator
+
+
+    .body
+      -if notice.present?
+        %p.notice= notice 
+      - if alert.present?
+        %p.alert.alert-info= alert 
+    
+      = yield
+
