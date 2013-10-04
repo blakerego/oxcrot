@@ -18,3 +18,30 @@
   font-family: "SpecialElite";
   src: font-url('SpecialElite.ttf');
 }
+
+ul.main_grid
+{
+  width: 100%;
+  margin-top: 5px;
+  li
+  {
+    list-style: none;
+    .title
+    {
+      background-color: rgba(0,0,0,.85);
+      position: absolute;
+      bottom: 0px;
+      color: white;
+      width: 100%;
+      h1
+      {
+        font-family: 'SpecialElite';
+        font-size: 24px
+      }
+    }
+    img
+    {
+      width: 100%;
+    }
+  }
+}

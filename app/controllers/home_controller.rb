@@ -9,9 +9,13 @@ class HomeController < ApplicationController
 
   def query_api(url)
     Rails.cache.fetch("#{url}", :expires_in => 6.hours) do
-      require 'net/http'
-      uri = URI.parse(URI.encode(url.strip))
-      result = Net::HTTP.get_response(uri)
+      begin
+        require 'net/http'
+        uri = URI.parse(URI.encode(url.strip))
+        result = Net::HTTP.get_response(uri)        
+      rescue Exception => e
+        ""
+      end
     end
   end
 

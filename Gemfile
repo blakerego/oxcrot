@@ -23,6 +23,8 @@ gem 'pry'
 gem 'better_errors'
 gem 'binding_of_caller'
 
+gem 'nokogiri'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

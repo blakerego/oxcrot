@@ -1,4 +1,38 @@
-%h1
-  Onyong
 
-= raw @posts.first['content']
+%ul.main_grid.row
+  / - binding.pry
+  - @posts.first(5).each do |post|
+    %li.post.col-md-6
+      .title
+        %h1
+          = post['title']
+      .post_image
+        = image_tag extract_first_image_from_post(post)
+
+:javascript
+  $(function() {
+    $('.main_grid.row').masonry({
+      itemSelector: '.post',
+      isAnimated: true,
+      columnWidth: function( containerWidth ) {
+ 
+        // do nothing for browsers with no media query support
+        // .container will always be 940px
+        if($(".container").width() == 940) {
+          return 240;
+        }  
+ 
+        var width = $(window).width();
+        var col = 300;
+ 
+        if(width &lt; 1200 &amp;&amp; width &gt;= 980) {
+          col = 240;
+        }
+        else if(width &lt; 980 &amp;&amp; width &gt;= 768) {
+          col = 186;
+        }
+ 
+        return col;
+      }
+    });
+  });
