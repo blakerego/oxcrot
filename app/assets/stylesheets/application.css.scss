@@ -19,26 +19,59 @@
   src: font-url('SpecialElite.ttf');
 }
 
-ul.main_grid
+.main_grid
 {
+  padding-left: 4px;
   width: 100%;
   margin-top: 5px;
-  li
+  .post
   {
-    list-style: none;
+    &:hover
+    {
+      .title
+      {
+        cursor: pointer;
+        h1
+        {
+          color: yellow;
+        }        
+      }
+    }
+
+    margin-bottom: 4px;
     .title
     {
-      background-color: rgba(0,0,0,.85);
+      background-color: rgba(0,0,0,.8);
       position: absolute;
       bottom: 0px;
       color: white;
       width: 100%;
+      padding-top: 10px;
       h1
       {
+        padding: 0px 14px 0 14px;
         font-family: 'SpecialElite';
-        font-size: 24px
+        font-size: 19px;
+        margin: 0;
+        -webkit-margin-after: 4px;
+      }
+      .excerpt
+      {
+        padding: 0px 14px 14px 14px;
+        font-family: 'Helvetica';
+      }
+      .date
+      {
+        font-family: 'SpecialElite';
+        background-color: black;
+        right: 0;
+        width: 100%;
+        font-size: 12px;
+        padding: 4px 14px;
       }
     }
+
+
     img
     {
       width: 100%;

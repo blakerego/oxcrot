@@ -673,8 +673,8 @@ pre code {
   clear: both;
 }
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .row:before,
 .row:after {
@@ -750,7 +750,7 @@ pre code {
 .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-right: 1px;
+  margin-right: .3%;
 }
 .col-xs-1,
 .col-xs-2,
@@ -987,7 +987,7 @@ pre code {
     width: 41.66666666666667%;
   }
   .col-md-6 {
-    width: 50%;
+    width: 49.7%;
   }
   .col-md-7 {
     width: 58.333333333333336%;
