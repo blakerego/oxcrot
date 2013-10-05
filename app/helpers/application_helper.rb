@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def trim_excerpt(post, length=150)
     doc = Nokogiri::HTML( post['excerpt'] )
-    return truncate(doc.css('p').first.text, :length => length)
+    return truncate(doc.css('p').first.text, :length => length, :omission => '... (read more)', :separator => ' ')
   end
 
   def post_date(post)
