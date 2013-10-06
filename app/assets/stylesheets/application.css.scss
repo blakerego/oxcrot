@@ -21,6 +21,7 @@
 
 .main_grid
 {
+  visibility: hidden;
   padding-left: 4px;
   width: 100%;
   margin-top: 5px;
@@ -68,6 +69,7 @@
         width: 100%;
         font-size: 10px;
         padding: 4px 14px;
+        text-align: right;
       }
     }
 

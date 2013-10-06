@@ -1,6 +1,6 @@
 
 .main_grid.row
-  - @posts.first(5).each do |post|
+  - @posts.first(8).each do |post|
     .post.col-md-6
       .title
         %h1
@@ -13,33 +13,11 @@
         = image_tag extract_first_image_from_post(post)
 
 :javascript
-  $(function() {
-    // var container = $('.main_grid');
-    // var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
-    // container.masonry({gutter: gutter, itemSelector: '.post', columnWidth: '.post'});
-
-    // $('.main_grid.row').masonry({
-    //   itemSelector: '.post',
-    //   isAnimated: true,
-    //   columnWidth: function( containerWidth ) {
- 
-    //     // do nothing for browsers with no media query support
-    //     // .container will always be 940px
-    //     if($(".container").width() == 940) {
-    //       return 240;
-    //     }  
- 
-    //     var width = $(window).width();
-    //     var col = 300;
- 
-    //     if(width &lt; 1200 &amp;&amp; width &gt;= 980) {
-    //       col = 240;
-    //     }
-    //     else if(width &lt; 980 &amp;&amp; width &gt;= 768) {
-    //       col = 186;
-    //     }
- 
-    //     return col;
-    //   }
-    // });
+  $(window).load(function(){
+    var container = $('.main_grid');
+    var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
+    var msnry = container.masonry({
+      itemSelector: '.post', 
+      columnWidth: '.post'});
+    $('.main_grid').css({'visibility': 'visible'});
   });
