@@ -1,7 +1,7 @@
 
-.main_grid.row
+.index_grid.row
   - @posts.first(8).each do |post|
-    .post.col-md-6
+    .post.col-md-6{"data-url" => post_url(post)}
       .title
         %h1
           = post['title']
@@ -14,10 +14,14 @@
 
 :javascript
   $(window).load(function(){
-    var container = $('.main_grid');
+    var container = $('.index_grid');
+    $('.post').on('click', function(data)
+    {
+      window.location.replace($(this).data()['url']);
+    })
     var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
     var msnry = container.masonry({
       itemSelector: '.post', 
       columnWidth: '.post'});
-    $('.main_grid').css({'visibility': 'visible'});
+    $('.index_grid').css({'visibility': 'visible'});
   });

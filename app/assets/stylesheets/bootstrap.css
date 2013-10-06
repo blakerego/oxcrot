@@ -336,7 +336,7 @@ hr {
   }
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 24px;
 }
 .lead {
   margin-bottom: 20px;
@@ -394,7 +394,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "SpecialElite", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }

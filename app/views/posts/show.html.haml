@@ -1,0 +1,20 @@
+.show.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+  .full-post
+    .header
+      %h1.title
+        = @post['title']
+      .subtitle
+        .author
+          = "Posted by: #{@post['author']['name']}"
+        .date
+          = post_date(@post)
+
+
+    .content
+      = raw @post['content']
+
+:javascript
+  $(function()
+  {
+    $('.alignnone').attr('style', '');
+  })
