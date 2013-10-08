@@ -90,9 +90,8 @@
 
           $form.bind("ajax:success", function(event, data, status, xhr) 
           {
-            $('.add_comment').html('<p>Thanks!</p>');
+            $('.add_comment').html('<div class="thanks"><p>Thanks for posting!</p></div>').show('slide');
             $('.comment_list').prepend(data);
-            debugger;
           });
 
         });

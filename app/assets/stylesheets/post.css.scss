@@ -122,6 +122,10 @@ body
       .add_comment
       {
         margin: 20px 0 44px 0;
+        .thanks
+        {
+          font-style: italic;
+        }
       }
 
       .comment_list
