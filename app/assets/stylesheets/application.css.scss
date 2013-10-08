@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */
@@ -23,4 +24,29 @@
 {
   font-family: "LiberationSerif";
   src: asset-url('LiberationSerif-Regular.ttf');
+}
+
+form.simple_form
+{
+  input, textarea
+  {
+    margin-bottom: 10px;
+  }
+
+  .submit
+  {
+    float: right;
+    margin-right: .7%;
+  }
+
+
+  textarea
+  {
+    width: 100%;
+  }
+}
+
+.hidden
+{
+  display: none;
 }

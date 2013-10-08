@@ -1812,8 +1812,12 @@ textarea.input-lg {
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0px;
   white-space: nowrap;
+  background-color: #333;
+  color: white;
+  font-family: 'SpecialElite';
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1826,8 +1830,9 @@ textarea.input-lg {
   outline-offset: -2px;
 }
 .btn:hover,
-.btn:focus {
-  color: #333333;
+.btn:focus 
+{
+  color: yellow;
   text-decoration: none;
 }
 .btn:active,
@@ -3511,7 +3516,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   float: right;
   margin-right: 15px;
-  padding: 9px 10px;
+  padding: 5px 10px;
   margin-top: 8px;
   margin-bottom: 8px;
   background-color: transparent;
@@ -3698,11 +3703,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-toggle {
-  border-color: #dddddd;
+  font-size: 25px;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
+  background-color: #333;
+  color: white;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #cccccc;

@@ -3,7 +3,7 @@
 %html
   %head
     %title Happily Adrift
-    = stylesheet_link_tag    "application", :media => "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   
@@ -11,11 +11,11 @@
     .navbar.navbar-default.navbar-static-top
       .container
         .navbar-header
-          %button.navbar-toggle{"data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
+          %button.navbar-toggle.icon-double-angle-down{"data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.row
             %li.col-md-2.col-md-offset-1
-              %a{:href => "#"} Home
+              = link_to 'Home', root_url
             %li.col-md-2
               %a{:href => "#about"} Places
             %li.col-md-2

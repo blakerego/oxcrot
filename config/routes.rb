@@ -1,8 +1,8 @@
 HappilyAdrift::Application.routes.draw do
   
   resources :posts do 
-    collection do 
-      get 'single'
+    member do 
+      post 'comment'
     end
   end
   root 'posts#index'
