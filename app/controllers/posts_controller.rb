@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     require 'digest/md5' #needed for comments
     post_id = params[:id]
     @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{post_id}").body)
-    @comments = Comment.where(:post_id => post_id).order('created_at DESC')
+    @comments = Comment.comments_for_post_id(post_id)
   end
 
   def site_url
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def comment
     comment = Comment.new(comment_params)
     if (comment.save)
-      render :json => comment
+      render :partial => '/comments/comment', :layout => false, :locals => {:comment => comment}
     else
       render :json => comemnt.errors
     end

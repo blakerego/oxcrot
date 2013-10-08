@@ -5,6 +5,7 @@ HappilyAdrift::Application.routes.draw do
       post 'comment'
     end
   end
+
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
