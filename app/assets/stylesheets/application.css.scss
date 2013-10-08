@@ -50,3 +50,41 @@ form.simple_form
 {
   display: none;
 }
+
+.image_block 
+{
+  position:relative;
+
+  & > .img 
+  {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    text-align: center;
+
+    img 
+    {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  & > .block
+  {
+    position: relative;
+    display: table-cell;
+    width: 10000px;
+
+    .header 
+    {
+      width: 92%;
+      line-height: 1em;
+      display: inline-block;
+      font-size: 10pt;
+      margin-right: 2px;
+      font-weight: bold;
+    }
+  }
+}

@@ -121,7 +121,38 @@ body
 
       .add_comment
       {
-        margin: 20px 0 100px 0;
+        margin: 20px 0 44px 0;
+      }
+
+      .comment_list
+      {
+        .comment
+        {
+          margin-bottom: 10px;
+          background-color: #EEE;
+          height: 82px;
+
+          .block 
+          {
+            height: 100%;
+            .header.name
+            {
+              font-family: 'SpecialElite';
+              font-size: 20px;
+              padding-top: 14px;
+              width: auto;
+            }
+           .content
+           {
+             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+             font-size: 16px;
+           } 
+           .date
+           {
+             font-size: 11px;
+           }
+          }
+        }
       }
     }
 

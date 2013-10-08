@@ -12,7 +12,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{params[:id]}").body)
+    require 'digest/md5' #needed for comments
+    post_id = params[:id]
+    @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{post_id}").body)
+    @comments = Comment.where(:post_id => post_id).order('created_at DESC')
   end
 
   def site_url
@@ -20,11 +23,12 @@ class PostsController < ApplicationController
   end
 
   def comment
-    comment_params = {:content => params['comment']['text']}
-    url = "#{site_url}/posts/#{params[:id]}/replies/new"
-    response = query_api_via_post(url, comment_params)
-    # binding.pry
-    render :json => response.body
+    comment = Comment.new(comment_params)
+    if (comment.save)
+      render :json => comment
+    else
+      render :json => comemnt.errors
+    end
   end
 
 
@@ -49,6 +53,10 @@ class PostsController < ApplicationController
       rescue Exception => e
         ""
       end      
+    end
+
+    def comment_params
+      params.require(:comment).permit(:name, :email, :content, :post_id)
     end
 
 end

@@ -21,13 +21,32 @@
         = simple_form_for :comment, 
               :url => "/posts/#{@post['ID']}/comment", 
               :remote => true do |f|
-          = f.input :text, :as => 'text', :placeholder => 'Add your comment', :input_html => {:class => 'comment_text'}, :label => false
+          = f.input :content, :as => 'text', :placeholder => 'Add your comment', :input_html => {:class => 'comment_text'}, :label => false
 
           .comment_metadata
             .row
+              = f.hidden_field :post_id, :value => @post['ID']
               = f.input :name, :as => 'string', :placeholder => 'Name', :input_html => {:class => 'comment_field hidden col-md-6 col-sm-1'}, :label => false
               = f.input :email, :as => 'string', :placeholder => 'Email', :input_html => {:class => 'comment_field hidden col-md-6 col-sm-1'}, :label => false
             = f.submit 'Post', :class => 'btn comment_field hidden submit'
+
+      .comment_list
+        - @comments.each do |comment| 
+          .comment.image_block 
+            .img.avatar 
+              = image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(comment.email)}" if comment.email.present?
+            .block
+              .header.name
+                = "#{comment.name}:"
+              %span.content
+                = comment.content
+              .date
+                = "#{time_ago_in_words(comment.created_at)} ago"
+
+
+
+
+
 
 :javascript
   $(function()
