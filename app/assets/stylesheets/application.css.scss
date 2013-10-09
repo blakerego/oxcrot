@@ -26,6 +26,23 @@
   src: asset-url('LiberationSerif-Regular.ttf');
 }
 
+@font-face 
+{
+  font-family: "LiberationSerif";
+  src: font-url('LiberationSerif-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face
+{
+  font-family: "LiberationSerif";
+  src: font-url('LiberationSerif-Italic.ttf');
+  font-weight: italic;
+  font-style: normal;
+
+}
+
 form.simple_form
 {
   input, textarea
