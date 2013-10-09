@@ -5,36 +5,50 @@
 
 :javascript
   $(window).load(function(){
-    var container = $('.index_grid');
-    $('.post').on('click', function(data)
-    {
-      window.location.replace($(this).data()['url']);
-    });
-    var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
-    var msnry = container.masonry(
-    {
-      itemSelector: '.post', 
-      columnWidth: '.post'});
-    $('.index_grid').css({'visibility': 'visible'});
-
-    container.infinitescroll(
-    {
-      navSelector  : '#page-nav',    // selector for the paged navigation 
-      nextSelector : 'a#page-nav',   // selector for the NEXT link (to page 2)
-      itemSelector : '.post',        // selector for all items you'll retrieve
-      loading: 
+    window.POST_GRID = function(){}
+    POST_GRID.prototype = {
+      init: function()
       {
-        finishedMsg: 'No more pages to load.',
-        img: 'http://i.imgur.com/6RMhx.gif'
-      }
-    },  function( newElements ) 
+        var current_inst = this;
+        var container = $('.index_grid');
+        $('.post').on('click', function(data)
         {
-          // trigger Masonry as a callback
-          var $newElems = $( newElements );
-          container.masonry( 'appended', $newElems );
-          $newElems.on('click', function(data)
-          {
-            window.location.href($(this).data()['url']);
-          })
+          current_inst.load_post_url($(this));
         });
+        var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
+        var msnry = container.masonry(
+        {
+          itemSelector: '.post', 
+          columnWidth: '.post'});
+        $('.index_grid').css({'visibility': 'visible'});
+
+        container.infinitescroll(
+        {
+          navSelector  : '#page-nav',    // selector for the paged navigation 
+          nextSelector : 'a#page-nav',   // selector for the NEXT link (to page 2)
+          itemSelector : '.post',        // selector for all items you'll retrieve
+          loading: 
+          {
+            finishedMsg: 'No more pages to load.',
+            img: 'http://i.imgur.com/6RMhx.gif'
+          }
+        },  function( newElements ) 
+            {
+              // trigger Masonry as a callback
+              var $newElems = $( newElements );
+              container.masonry( 'appended', $newElems );
+              $newElems.on('click', function(data)
+              {
+                current_inst.load_post_url($(this));
+              })
+            });        
+      },
+
+      load_post_url: function(elem)
+      {
+        window.location.href = elem.data()['url'];
+      }
+    }
+    var grid = new POST_GRID();
+    grid.init();
   });
