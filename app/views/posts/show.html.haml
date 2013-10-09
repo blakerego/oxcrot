@@ -2,7 +2,7 @@
   .full-post
     .header
       %h1.title
-        = @post['title']
+        = raw @post['title']
       .subtitle
         .author
           = "Posted by: #{@post['author']['name']}"

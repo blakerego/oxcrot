@@ -11,16 +11,12 @@ class PostsController < ApplicationController
 
     data = query_api_via_get("#{site_url}/posts?page=#{@page.to_s}&number=#{per_page}")
     parsed = JSON.parse(data.body)
+
     @posts = parsed['posts']
 
     if request.xhr?
       render :partial => 'posts_preview', :layout => false, :locals => {:posts => @posts}
     end
-  end
-
-  def single_posts
-    url = params['url']
-    data = query_api_via_get(url)
   end
 
   def show
