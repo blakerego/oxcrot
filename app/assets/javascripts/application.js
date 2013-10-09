@@ -13,3 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(function()
+{
+  $('.header_link').each(function()
+  {
+    $this = $(this);
+    if ($this.data()['current'])
+    {
+      $this.addClass('selected');
+    }
+  })
+});

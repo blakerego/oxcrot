@@ -7,7 +7,7 @@ HappilyAdrift::Application.routes.draw do
   end
 
   root 'posts#index'
-
+  get '/feed' => 'home#feed'
   get ':action'=>'static#:action'
 
   # The priority is based upon order of creation: first created -> highest priority.
