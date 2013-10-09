@@ -2,7 +2,7 @@
   .post.col-md-6{"data-url" => post_url(post)}
     .title
       %h1
-        = post['title']
+        = raw post['title']
       .excerpt
         = trim_excerpt(post)
       .date

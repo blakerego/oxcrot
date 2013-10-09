@@ -52,11 +52,16 @@
               // trigger Masonry as a callback
               var $newElems = $( newElements );
               current_inst.container.masonry( 'appended', $newElems );
+
               $newElems.on('click', function(data)
-              {
-                current_inst.load_post_url($(this));
-                current_inst.initialize_masonry_grid();
-              })
+                {
+                  current_inst.load_post_url($(this));
+                });
+
+              $('img', newElements).on('load', function(data)
+                {
+                  current_inst.initialize_masonry_grid();
+                });
             });        
       },
 
