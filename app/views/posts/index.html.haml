@@ -1,7 +1,7 @@
 .index_grid.row
   = render 'posts_preview', :posts => @posts
 
-  = link_to "next", posts_url(:page => @next_page), :id => "page-nav"
+= link_to "next", posts_url(:page => @next_page), :id => "page-nav"
 
 :javascript
   $(window).load(function(){
@@ -9,7 +9,7 @@
     $('.post').on('click', function(data)
     {
       window.location.replace($(this).data()['url']);
-    })
+    });
     var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
     var msnry = container.masonry(
     {
@@ -32,5 +32,9 @@
           // trigger Masonry as a callback
           var $newElems = $( newElements );
           container.masonry( 'appended', $newElems );
+          $newElems.on('click', function(data)
+          {
+            window.location.href($(this).data()['url']);
+          })
         });
   });

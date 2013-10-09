@@ -1,13 +1,13 @@
 body
 {
-
+  
+  #page-nav
+  {
+    display: none;
+  }
   .index_grid
   {
 
-    #page-nav
-    {
-      display: none;
-    }
     visibility: hidden;
     padding-left: 4px;
     width: 100%;
