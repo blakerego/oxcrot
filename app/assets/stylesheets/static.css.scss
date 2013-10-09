@@ -23,11 +23,17 @@
   }
 }
 
-
-
 .resources
 {
   margin-bottom: 20px;
+  a
+  {
+    color: #333333;
+    &:hover
+    {
+      color: #333333;
+    }
+  }
   .title
   {
     text-align: center;
