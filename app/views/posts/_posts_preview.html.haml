@@ -1,0 +1,11 @@
+- posts.each do |post|
+  .post.col-md-6{"data-url" => post_url(post)}
+    .title
+      %h1
+        = post['title']
+      .excerpt
+        = trim_excerpt(post)
+      .date
+        = post_date(post)
+    .post_image
+      = image_tag extract_first_image_from_post(post)

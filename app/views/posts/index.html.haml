@@ -1,16 +1,7 @@
-
 .index_grid.row
-  - @posts.first(8).each do |post|
-    .post.col-md-6{"data-url" => post_url(post)}
-      .title
-        %h1
-          = post['title']
-        .excerpt
-          = trim_excerpt(post)
-        .date
-          = post_date(post)
-      .post_image
-        = image_tag extract_first_image_from_post(post)
+  = render 'posts_preview', :posts => @posts
+
+  = link_to "next", posts_url(:page => @next_page), :id => "page-nav"
 
 :javascript
   $(window).load(function(){
@@ -20,8 +11,26 @@
       window.location.replace($(this).data()['url']);
     })
     var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
-    var msnry = container.masonry({
+    var msnry = container.masonry(
+    {
       itemSelector: '.post', 
       columnWidth: '.post'});
     $('.index_grid').css({'visibility': 'visible'});
+
+    container.infinitescroll(
+    {
+      navSelector  : '#page-nav',    // selector for the paged navigation 
+      nextSelector : 'a#page-nav',   // selector for the NEXT link (to page 2)
+      itemSelector : '.post',        // selector for all items you'll retrieve
+      loading: 
+      {
+        finishedMsg: 'No more pages to load.',
+        img: 'http://i.imgur.com/6RMhx.gif'
+      }
+    },  function( newElements ) 
+        {
+          // trigger Masonry as a callback
+          var $newElems = $( newElements );
+          container.masonry( 'appended', $newElems );
+        });
   });
