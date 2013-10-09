@@ -7,22 +7,37 @@
   $(window).load(function(){
     window.POST_GRID = function(){}
     POST_GRID.prototype = {
+
+      container: null,
+
+      masonry_object: null,
+
       init: function()
       {
+        this.container = $('.index_grid');
         var current_inst = this;
-        var container = $('.index_grid');
+        
         $('.post').on('click', function(data)
         {
           current_inst.load_post_url($(this));
         });
-        var gutter = parseInt( jQuery( '.post' ).css( 'marginBottom' ) );
-        var msnry = container.masonry(
+        this.initialize_masonry_grid();
+        this.initialize_infinite_scroll();
+      },
+
+      initialize_masonry_grid: function()
+      {
+        this.masonry_object = this.container.masonry(
         {
           itemSelector: '.post', 
           columnWidth: '.post'});
         $('.index_grid').css({'visibility': 'visible'});
+      }, 
 
-        container.infinitescroll(
+      initialize_infinite_scroll: function()
+      {
+        var current_inst = this;
+        this.container.infinitescroll(
         {
           navSelector  : '#page-nav',    // selector for the paged navigation 
           nextSelector : 'a#page-nav',   // selector for the NEXT link (to page 2)
@@ -36,10 +51,11 @@
             {
               // trigger Masonry as a callback
               var $newElems = $( newElements );
-              container.masonry( 'appended', $newElems );
+              current_inst.container.masonry( 'appended', $newElems );
               $newElems.on('click', function(data)
               {
                 current_inst.load_post_url($(this));
+                current_inst.initialize_masonry_grid();
               })
             });        
       },
