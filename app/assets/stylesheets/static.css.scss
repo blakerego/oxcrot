@@ -25,15 +25,15 @@
 
 .resources
 {
-  margin-bottom: 20px;
-  a
-  {
-    color: #333333;
-    &:hover
-    {
-      color: #333333;
-    }
-  }
+  // a
+  // {
+  //   color: #333333;
+  //   text-decoration: underline;
+  //   &:hover
+  //   {
+  //     color: #333333;
+  //   }
+  // }
   .title
   {
     text-align: center;
@@ -43,7 +43,7 @@
   {
     p
     {
-      margin-bottom: 2px;
+      margin-bottom: 5px;
     } 
 
     i.header
@@ -62,17 +62,22 @@
 
     ul
     {
+      -webkit-padding-start: 0;
       li
       {
         list-style: none;
       }
+    }
+
+    .last_item
+    {
+      margin-bottom: 90px;
     }
   }
 }
 
 .about
 {
-  margin-bottom: 70px;
   .title
   {
     text-align: center;
@@ -85,6 +90,13 @@
       display: block;
       margin: 0 auto;
       margin-bottom: 20px;
+    }
+    .remainder
+    {
+      p:last-child
+      {
+        margin-bottom: 90px;
+      }
     }
   }
 }
