@@ -15,7 +15,7 @@ module PostHelper
   end
 
   def post_url(post)
-    return "/posts/#{post['ID']}"
+    return "/#{post['slug']}"
   end
 
 end
