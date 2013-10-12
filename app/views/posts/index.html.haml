@@ -1,3 +1,4 @@
+.remove_me.spinner
 .index_grid.row
   = render 'posts_preview', :posts => @posts
 
@@ -31,6 +32,7 @@
         {
           itemSelector: '.post', 
           columnWidth: '.post'});
+        $('.remove_me').remove();
         $('.index_grid').css({'visibility': 'visible'});
       }, 
 
