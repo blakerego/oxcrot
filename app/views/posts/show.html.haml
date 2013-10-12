@@ -46,6 +46,18 @@
   {
     $('.alignnone').attr('style', '');
 
+    $.each($('img'), function(index, image)
+    {
+      var element = $(image);
+      if (element.parent().get(0).tagName == "A")
+      {
+        // Unwrap image links.
+        element.unwrap();
+      }
+      var current = element.attr('src');
+      element.attr('src', current.split('?')[0]);
+    });
+
     var comment_box = new ADD_COMMENT_BOX();
     comment_box.init();
   })
