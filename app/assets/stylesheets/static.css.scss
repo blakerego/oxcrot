@@ -25,15 +25,6 @@
 
 .resources
 {
-  // a
-  // {
-  //   color: #333333;
-  //   text-decoration: underline;
-  //   &:hover
-  //   {
-  //     color: #333333;
-  //   }
-  // }
   .title
   {
     text-align: center;
@@ -48,7 +39,8 @@
 
     i.header
     {
-      font-size: 30px
+      font-size: 30px;
+      width: 33px;
     }
 
     .section_header
