@@ -33,10 +33,11 @@
 
 
     .body
-      -if notice.present?
-        %p.notice= notice 
-      - if alert.present?
-        %p.alert.alert-info= alert 
+      .notice
+        -if notice.present?
+          %p.notice= notice 
+        - if alert.present?
+          %p.alert.alert-info= alert 
     
       = yield
 

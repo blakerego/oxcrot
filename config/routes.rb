@@ -8,8 +8,15 @@ HappilyAdrift::Application.routes.draw do
 
   root 'posts#index'
   get '/feed' => 'home#feed'
-  # get ':action'=>'static#:action'
+  
+  get 'admin' => 'admin#index'
+  post 'clear_cache' => 'admin#clear_cache'
+
+
+
+
   get ':slug' => 'static#pages'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

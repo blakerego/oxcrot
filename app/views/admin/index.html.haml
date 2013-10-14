@@ -1,0 +1,12 @@
+.admin
+  .notice
+    - if @notice.present?
+      %p
+        = @notice
+
+  %h1 Admin Page
+  = link_to "Manage Posts", "http://oxcrot.wordpress.com/wp-admin/"
+
+  = simple_form_for :clear_cache, :url => clear_cache_path do |f| 
+    = f.submit 'Clear Cache'
+
