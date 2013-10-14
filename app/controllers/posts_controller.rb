@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     require 'digest/md5' #needed for comments
     post_id = params[:id]
     @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{post_id}").body)
+    @title = @post['title']
     @comments = Comment.comments_for_post_id(post_id)
   end
 

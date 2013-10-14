@@ -19,6 +19,7 @@ class StaticController < ApplicationController
     response = query_api_via_get(url)
     if (response.present?)
       @post = JSON.parse(query_api_via_get(url).body)
+      @title = @post['title']
       post_id = ['ID']
       @comments = Comment.comments_for_post_id(post_id)
       render "/posts/show"

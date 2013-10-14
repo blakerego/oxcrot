@@ -29,5 +29,14 @@ class ApplicationController < ActionController::Base
     end      
   end
 
+  def render_title
+    if defined?(@title)
+      return @title
+    else
+      return "Happily Adrift"
+    end
+  end
+  helper_method :render_title
+
 
 end

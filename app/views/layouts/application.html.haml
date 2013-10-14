@@ -2,7 +2,7 @@
 
 %html
   %head
-    %title Happily Adrift
+    %title= render_title
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -26,7 +26,7 @@
               = link_to 'Contact', '/contact', "data-current" => request.env['PATH_INFO'] == '/contact', :class => "header_link"
     .header_title
       .title
-        Happily Adrift
+        = link_to "Happily Adrift", root_path
       .subtitle
         A digital nomad couple traveling the world.
     .separator
