@@ -1,0 +1,9 @@
+- if @previous_post_link.present?
+  .previous
+    %i.icon-arrow-left
+    =link_to "#{@previous_post['title']}", @previous_post_link
+- if @next_post_link.present?
+  .next
+    = link_to "#{@next_post['title']}", @next_post_link
+    %i.icon-arrow-right
+    

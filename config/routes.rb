@@ -3,6 +3,7 @@ HappilyAdrift::Application.routes.draw do
   resources :posts do 
     member do 
       post 'comment'
+      get 'navigation_links'
     end
   end
 

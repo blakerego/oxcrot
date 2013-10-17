@@ -21,21 +21,9 @@ class PostsController < ApplicationController
   def show
     require 'digest/md5' #needed for comments
     post_id = params[:id]
-    @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{post_id}").body)
+    @post = WordpressConnection.get_post_by_id(post_id)
     @title = @post['title']
     @comments = Comment.comments_for_post_id(post_id)
-
-    date = @post['date']
-    previous_data = JSON.parse(query_api_via_get("#{site_url}/posts?before=#{date}").body)
-    next_data = JSON.parse( query_api_via_get("#{site_url}/posts?after=#{date}").body )
-    if previous_data['found'] > 0
-      @previous_post_link = root_url + previous_data['posts'].first['slug']
-    end
-
-    if next_data['found'] > 0 
-      @next_post_link = root_url + next_data['posts'].first['slug']
-    end
-
   end
 
   def comment
@@ -45,6 +33,32 @@ class PostsController < ApplicationController
     else
       render :json => comemnt.errors
     end
+
+  end
+
+  def navigation_links
+
+    post_id = params[:id]
+
+    if params[:date].present?
+      date = params[:date]
+    else
+      post = WordpressConnection.get_post_by_id(post_id)
+      date = post['date']
+    end
+
+    @previous_post = WordpressConnection.get_previous_post(date, post_id)
+    @next_post = WordpressConnection.get_next_post(date, post_id)
+    
+    if @previous_post.present?
+      @previous_post_link = root_url + @previous_post['slug']
+    end
+
+    if @next_post.present?
+      @next_post_link = root_url + @next_post['slug']
+    end
+
+    render :partial =>  'navigation_links', :layout => false
   end
 
 

@@ -21,18 +21,6 @@ class StaticController < ApplicationController
       @title = @post['title']
       post_id = ['ID']
       @comments = Comment.comments_for_post_id(post_id)
-
-      date = @post['date']
-      previous_data = WordpressConnection.get_previous_post(@post)
-      next_data = WordpressConnection.get_next_post(@post)
-      if previous_data.present?
-        @previous_post_link = root_url + previous_data['slug']
-      end
-
-      if next_data.present?
-        @next_post_link = root_url + next_data['slug']
-      end
-
       render "/posts/show"
     else
       render "static/#{slug}"

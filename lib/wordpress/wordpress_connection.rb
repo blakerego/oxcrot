@@ -27,24 +27,29 @@ module WordpressConnection
     WordpressConnection.initialize(path)
   end
 
-  def self.get_previous_post(post)
-    date = DateTime.parse(post['date']).strftime('%F')
+  def self.get_post_by_id(post_id)
+    path = "/posts/#{post_id}"
+    WordpressConnection.initialize(path)
+  end
+
+  def self.get_previous_post(date, post_id)
+    date = DateTime.parse(date).strftime('%F')
     path = "/posts?before=#{date}&order_by=date&order=DESC"
     posts_response = WordpressConnection.initialize(path)
-    WordpressConnection.get_first_different_post(post, posts_response)
+    WordpressConnection.get_first_different_post(post_id, posts_response)
   end
 
-  def self.get_next_post(post)
-    date = DateTime.parse(post['date']).strftime('%F')
+  def self.get_next_post(date, post_id)
+    date = DateTime.parse(date).strftime('%F')
     path = "/posts?after=#{date}&order_by=date&order=ASC"
     posts_response = WordpressConnection.initialize(path)
-    WordpressConnection.get_first_different_post(post, posts_response)
+    WordpressConnection.get_first_different_post(post_id, posts_response)
   end
 
-  def self.get_first_different_post(post,posts_response)
+  def self.get_first_different_post(post_id,posts_response)
     return nil if posts_response['found'] <= 0 
     posts_response['posts'].each do |p|
-      if p['ID'] != post['ID']
+      if p['ID'].to_s != post_id
         return p
       end
     end

@@ -13,13 +13,6 @@
       = raw @post['content']
 
     .navigation_buttons
-      - if @previous_post_link.present?
-        .previous
-          =link_to "Previous", @previous_post_link
-      - if @next_post_link.present?
-        .next
-          = link_to "Next", @next_post_link
-
 
     .comments
       .header
@@ -47,9 +40,6 @@
           = render '/comments/comment', :comment => comment
 
 
-
-
-
 :javascript
   $(function()
   {
@@ -65,6 +55,11 @@
       }
       var current = element.attr('src');
       element.attr('src', current.split('?')[0]);
+    });
+
+    $.get("/posts/#{@post['ID']}/navigation_links", function(data)
+    {
+      $('.navigation_buttons').html(data);
     });
 
     var comment_box = new ADD_COMMENT_BOX();
