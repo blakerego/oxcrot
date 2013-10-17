@@ -14,7 +14,6 @@ NAVIGATION_LINKS.prototype = {
      {
       $('.previous').show('fade');
       $('.next').show('fade');
-      // $(window).unbind('scroll');
      }
      else
      {
@@ -22,6 +21,7 @@ NAVIGATION_LINKS.prototype = {
       $('.next').hide('fade');       
      }
     });
+
   },
 
   retrieve_links: function()
@@ -29,6 +29,12 @@ NAVIGATION_LINKS.prototype = {
     $.get(this.path, function(data)
     {
       $('.navigation_buttons').html(data);
+      $('.remove').on('click', function()
+      {
+        $(window).unbind('scroll');
+        $(this).parent().hide('fade');
+      });
+
     });
   }  
 }
