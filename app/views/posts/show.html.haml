@@ -12,6 +12,15 @@
     .content
       = raw @post['content']
 
+    .navigation_buttons
+      - if @previous_post_link.present?
+        .previous
+          =link_to "Previous", @previous_post_link
+      - if @next_post_link.present?
+        .next
+          = link_to "Next", @next_post_link
+
+
     .comments
       .header
         %h2.title

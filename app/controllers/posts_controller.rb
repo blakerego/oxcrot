@@ -9,8 +9,7 @@ class PostsController < ApplicationController
     @next_page = @page + 1
     per_page = 8
 
-    data = query_api_via_get("#{site_url}/posts?page=#{@page.to_s}&number=#{per_page}")
-    parsed = JSON.parse(data.body)
+    parsed = WordpressConnection.posts(@page, per_page)
 
     @posts = parsed['posts']
 
@@ -25,6 +24,18 @@ class PostsController < ApplicationController
     @post = JSON.parse(query_api_via_get("#{site_url}/posts/#{post_id}").body)
     @title = @post['title']
     @comments = Comment.comments_for_post_id(post_id)
+
+    date = @post['date']
+    previous_data = JSON.parse(query_api_via_get("#{site_url}/posts?before=#{date}").body)
+    next_data = JSON.parse( query_api_via_get("#{site_url}/posts?after=#{date}").body )
+    if previous_data['found'] > 0
+      @previous_post_link = root_url + previous_data['posts'].first['slug']
+    end
+
+    if next_data['found'] > 0 
+      @next_post_link = root_url + next_data['posts'].first['slug']
+    end
+
   end
 
   def comment

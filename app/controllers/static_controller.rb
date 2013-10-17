@@ -15,13 +15,24 @@ class StaticController < ApplicationController
   end
 
   def get_post_from_slug(slug)
-    url = "#{site_url}/posts/slug:#{slug}"
-    response = query_api_via_get(url)
+    response = WordpressConnection.get_post_by_slug(slug)
     if (response.present?)
-      @post = JSON.parse(query_api_via_get(url).body)
+      @post = response
       @title = @post['title']
       post_id = ['ID']
       @comments = Comment.comments_for_post_id(post_id)
+
+      date = @post['date']
+      previous_data = WordpressConnection.get_previous_post(@post)
+      next_data = WordpressConnection.get_next_post(@post)
+      if previous_data.present?
+        @previous_post_link = root_url + previous_data['slug']
+      end
+
+      if next_data.present?
+        @next_post_link = root_url + next_data['slug']
+      end
+
       render "/posts/show"
     else
       render "static/#{slug}"
