@@ -1,9 +1,14 @@
 - if @previous_post_link.present?
-  .previous
-    %i.icon-arrow-left
+  .previous.navbtn
     =link_to "#{@previous_post['title']}", @previous_post_link
+    .read_more
+      =link_to "Read More", @previous_post_link
+    %i.icon-chevron-left
+
 - if @next_post_link.present?
-  .next
+  .next.navbtn
     = link_to "#{@next_post['title']}", @next_post_link
-    %i.icon-arrow-right
-    
+    .read_more
+      = link_to "Read More", @next_post_link
+    %i.icon-chevron-right
+

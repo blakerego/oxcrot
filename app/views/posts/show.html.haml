@@ -57,11 +57,11 @@
       element.attr('src', current.split('?')[0]);
     });
 
-    $.get("/posts/#{@post['ID']}/navigation_links", function(data)
-    {
-      $('.navigation_buttons').html(data);
-    });
 
     var comment_box = new ADD_COMMENT_BOX();
     comment_box.init();
+
+    var navigation_links = new NAVIGATION_LINKS();
+    navigation_links.init("/posts/#{@post['ID']}/navigation_links");
+
   })
