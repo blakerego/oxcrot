@@ -18,7 +18,7 @@ module WordpressConnection
   end
 
   def self.posts(page=1, per_page=8)
-    path = "/posts?page=#{@page.to_s}&number=#{per_page}"
+    path = "/posts?page=#{page.to_s}&number=#{per_page}"
     WordpressConnection.initialize(path)
   end
 
@@ -53,6 +53,7 @@ module WordpressConnection
         return p
       end
     end
+    nil
   end
 
 end
