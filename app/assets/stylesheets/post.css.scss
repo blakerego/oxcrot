@@ -125,6 +125,10 @@ body
         display: none;
         float: right;
         right: 0;
+        .read_more
+        {
+          float: right;
+        }
       }
       .title
       {
@@ -134,7 +138,7 @@ body
       {
         padding: 10px 20px 10px 10px;
         -webkit-box-shadow: 0 4px 10px #666;
-        border-top: 2px solid #000;
+        border-top: 4px solid #000;
         position: fixed;
         bottom: 0;
         background-color: white;
@@ -147,6 +151,18 @@ body
           font-size: 11px;
           cursor: pointer; 
         }
+      }
+      .navbtn:before
+      {
+        content:"";
+        display:block;
+        position:absolute;
+        z-index:-1;
+        top:0px;
+        left:2px;
+        right:2px;
+        bottom:2px;
+        border-top:2px solid yellow
       }
       a
       {
