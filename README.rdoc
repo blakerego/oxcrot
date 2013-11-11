@@ -14,5 +14,5 @@ You will need to set the following environment variables:
 
 (see http://developer.wordpress.com/docs/api/1/get/sites/%24site/ for more info on what is expected for $site)
 
-
+* DOMAIN
 
