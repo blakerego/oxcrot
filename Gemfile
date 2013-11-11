@@ -6,8 +6,6 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
-gem "rack-force_domain", "~> 0.2.0"
-
 group :production do
   gem 'thin'  
 end
