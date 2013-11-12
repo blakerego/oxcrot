@@ -24,12 +24,17 @@ module WordpressConnection
 
   def self.get_post_by_slug(slug)
     path = "/posts/slug:#{slug}"
-    WordpressConnection.initialize(path)
+    WordpressConnection.initialize(path, 30.days)
   end
 
   def self.get_post_by_id(post_id)
     path = "/posts/#{post_id}"
     WordpressConnection.initialize(path)
+  end
+
+  def self.get_post_by_category(category)
+    path = "/posts?category=#{category}"
+    WordpressConnection.initialize(path)['posts']
   end
 
   def self.get_previous_post(date, post_id)
@@ -42,7 +47,7 @@ module WordpressConnection
   def self.get_next_post(date, post_id)
     date = DateTime.parse(date).strftime('%F')
     path = "/posts?after=#{date}&order_by=date&order=ASC"
-    posts_response = WordpressConnection.initialize(path)
+    posts_response = WordpressConnection.initialize(path, 99.days)
     WordpressConnection.get_first_different_post(post_id, posts_response)
   end
 

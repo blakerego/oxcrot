@@ -7,6 +7,8 @@ HappilyAdrift::Application.routes.draw do
     end
   end
 
+  resources :tags
+
   root 'posts#index'
   get '/feed' => 'home#feed'
   
