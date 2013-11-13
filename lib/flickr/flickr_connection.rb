@@ -1,23 +1,23 @@
 module FlickrConnection
 
   extend ActiveSupport::Concern
-  include FlickrJsonParser
+  extend FlickrJsonParser
 
   def self.site_url
     return "http://api.flickr.com/services"
   end
 
   def self.initialize(path = "", expires_in=6.hours)
-    # Rails.cache.fetch("#{path}", :expires_in => expires_in) do
+    include FlickrJsonParser
+    Rails.cache.fetch("#{path}", :expires_in => expires_in) do
       connection = Faraday.new(:url => "#{FlickrConnection.site_url}#{path}") do |faraday|
         faraday.adapter Faraday.default_adapter
         faraday.headers['Content-Type'] = 'application/json'
       end
       response = connection.get
       response.body
-      parse(response.body)
-      # JSON.parse(response.body)
-    # end
+      FlickrConnection.parse(response.body)
+    end
   end
 
   def self.feed(tags)    

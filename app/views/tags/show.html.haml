@@ -1,5 +1,9 @@
 %h1= "#{@category}"
 
+- @flickr_items.each do |f|
+  .flickr_images
+    = image_tag f['media']['m']
+
 .index_grid.row
   = render '/posts/posts_preview', :posts => @posts
 
