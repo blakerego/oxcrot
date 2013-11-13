@@ -21,5 +21,6 @@ module HappilyAdrift
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/lib/)
     config.autoload_paths += %W(#{config.root}/lib/wordpress)
+    config.autoload_paths += %W(#{config.root}/lib/flickr)    
   end
 end
