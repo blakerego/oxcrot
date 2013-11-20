@@ -1,5 +1,6 @@
 module PostHelper
   def extract_first_image_from_post(post)
+    return post['featured_image'] if post['featured_image'].present?
     doc = Nokogiri::HTML( post['content'] )
     return doc.css('img').first['src']
   end
