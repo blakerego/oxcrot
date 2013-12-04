@@ -48,7 +48,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rb-fsevent'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'jasminerice'
