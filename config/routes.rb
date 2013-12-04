@@ -9,8 +9,8 @@ HappilyAdrift::Application.routes.draw do
 
   resources :tags
 
-  # root 'posts#index'
-  root 'static#under_construction'
+  root 'posts#index'
+  # root 'static#under_construction'
   get '/feed' => 'home#feed'
   
   get 'admin' => 'admin#index'
