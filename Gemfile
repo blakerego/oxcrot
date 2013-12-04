@@ -48,14 +48,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+group :development, :test do
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'jasminerice'
+  gem 'guard-jasmine'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

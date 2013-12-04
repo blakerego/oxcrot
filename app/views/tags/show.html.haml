@@ -1,0 +1,18 @@
+%h1= "#{@category}"
+
+%ul.flickr_images
+  - @flickr_items.each do |f|
+    %li
+      = image_tag f['media']['m']
+
+.index_grid.row
+  = render '/posts/posts_preview', :posts => @posts
+
+:javascript
+  $(window).load(function(){
+    var grid = new POST_GRID();
+    grid.init();
+
+    $('.flickr_images').elastislide();
+    $('.flickr_images').show();
+  });

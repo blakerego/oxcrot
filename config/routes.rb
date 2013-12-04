@@ -7,7 +7,10 @@ HappilyAdrift::Application.routes.draw do
     end
   end
 
-  root 'posts#index'
+  resources :tags
+
+  # root 'posts#index'
+  root 'static#under_construction'
   get '/feed' => 'home#feed'
   
   get 'admin' => 'admin#index'
