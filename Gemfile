@@ -24,7 +24,6 @@ gem 'jquery-rails'
 gem "haml-rails"
 gem "simple_form"
 gem 'awesome_print'
-gem 'debugger'
 gem 'pry'
 gem 'better_errors'
 gem 'binding_of_caller'
@@ -54,6 +53,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'jasminerice'
   gem 'guard-jasmine'
+  gem 'debugger'
 end
 
 # Use debugger
