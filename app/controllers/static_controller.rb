@@ -5,6 +5,7 @@ class StaticController < ApplicationController
   end
 
   def pages
+    
     slug = params[:slug]
 
     if known_pages.include?(slug)
@@ -19,7 +20,7 @@ class StaticController < ApplicationController
     if (response.present?)
       @post = response
       @title = @post['title']
-      post_id = ['ID']
+      post_id = @post['ID']
       @comments = Comment.comments_for_post_id(post_id)
       render "/posts/show"
     else
