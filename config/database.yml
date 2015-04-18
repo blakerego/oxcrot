@@ -3,9 +3,11 @@ development: &development
   host: localhost
   database: oxcrot_dev
   encoding: unicode
-  
+  username: blake
+
 test: &test
   adapter: postgresql
   host: localhost
   database: oxcrot_test
   encoding: unicode
+  username: blake
