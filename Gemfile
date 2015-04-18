@@ -24,7 +24,6 @@ gem 'jquery-rails'
 gem "haml-rails"
 gem "simple_form"
 gem 'awesome_print'
-gem 'debugger'
 gem 'pry'
 gem 'better_errors'
 gem 'binding_of_caller'
