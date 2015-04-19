@@ -3,7 +3,7 @@
     .remove
       %i.icon-remove
     .title
-      =link_to "#{@previous_post['title']}", @previous_post_link
+      =link_to "#{@previous_post_title}", @previous_post_link
     .read_more
       %i.icon-caret-left
       =link_to "Read More", @previous_post_link
@@ -14,7 +14,7 @@
     .remove
       %i.icon-remove
     .title
-      = link_to "#{@next_post['title']}", @next_post_link
+      = link_to "#{@next_post_title}", @next_post_link
     .read_more
       = link_to "Read More", @next_post_link
       %i.icon-caret-right
