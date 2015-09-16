@@ -51,10 +51,12 @@ class PostsController < ApplicationController
     @next_post = WordpressConnection.get_next_post(date, post_id)
     
     if @previous_post.present?
+      @previous_post_title = HTMLEntities.new.decode @previous_post['title']
       @previous_post_link = root_url + @previous_post['slug']
     end
 
     if @next_post.present?
+      @next_post_title = HTMLEntities.new.decode @next_post['title']
       @next_post_link = root_url + @next_post['slug']
     end
 
